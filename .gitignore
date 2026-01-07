@@ -7,3 +7,4 @@ node_modules/
 .env
 docs/
 ./apps/api/dist/
+keys/

@@ -1,12 +1,15 @@
 FROM node:20-alpine AS builder
 
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm ci
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY apps/api/package.json ./apps/api/
+RUN pnpm install --frozen-lockfile
 
 COPY . .
-RUN npm run build:api
+RUN pnpm run build:api
 
 FROM node:20-alpine AS runner
 
