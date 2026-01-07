@@ -1,0 +1,9 @@
+.nx/installation
+.nx/cache
+.nx/workspace-data
+vite.config.*.timestamp*
+test-output
+node_modules/
+.env
+docs/
+./apps/api/dist/
